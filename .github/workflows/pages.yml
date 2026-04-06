@@ -24,6 +24,10 @@ jobs:
           node-version: "20"
           cache: npm
 
+      # Lockfile matches npm 11; Node 20's npm 10 fails npm ci (picomatch v2 vs v4 peer layout).
+      - name: Use npm 11 for npm ci
+        run: npm install -g npm@11
+
       - name: Install dependencies
         run: npm ci
 
