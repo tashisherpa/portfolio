@@ -9,9 +9,10 @@ permissions:
   pages: write
   id-token: write
 
+# Do not cancel in-progress runs: a new push could cancel build before upload, leaving deploy with no artifact.
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -45,9 +46,10 @@ jobs:
           npm run build
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: out
+          retention-days: 7
 
   deploy:
     needs: build
@@ -57,4 +59,4 @@ jobs:
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - id: deploy
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
