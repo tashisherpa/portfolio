@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useSyncExternalStore } from "react";
+import { useCallback, useRef, useSyncExternalStore } from "react";
 
 type Theme = "light" | "dark";
 
@@ -20,6 +20,11 @@ function subscribeTheme(onChange: () => void) {
   return () => window.removeEventListener("theme-change", handler);
 }
 
+const KANGAROO_EVENT = "kangaroo-hop-egg";
+const SPAM_WINDOW_MS = 1400;
+const SPAM_COUNT = 3;
+const KANGAROO_COOLDOWN_MS = 2800;
+
 export function ThemeToggle() {
   const theme = useSyncExternalStore(
     subscribeTheme,
@@ -27,10 +32,25 @@ export function ThemeToggle() {
     () => "light" as Theme,
   );
 
+  const spamTimesRef = useRef<number[]>([]);
+  const lastKangarooRef = useRef(0);
+
   const toggle = useCallback(() => {
     const next: Theme = getDomTheme() === "light" ? "dark" : "light";
     applyTheme(next);
     window.dispatchEvent(new Event("theme-change"));
+
+    const now = Date.now();
+    const times = spamTimesRef.current.filter((t) => now - t < SPAM_WINDOW_MS);
+    times.push(now);
+    spamTimesRef.current = times;
+    if (times.length >= SPAM_COUNT) {
+      spamTimesRef.current = [];
+      if (now - lastKangarooRef.current >= KANGAROO_COOLDOWN_MS) {
+        lastKangarooRef.current = now;
+        window.dispatchEvent(new CustomEvent(KANGAROO_EVENT));
+      }
+    }
   }, []);
 
   const label = theme === "dark" ? "Switch to light mode" : "Switch to dark mode";
