@@ -4,6 +4,8 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ThemeInitScript } from "@/components/ThemeInitScript";
+import { CandyRainEgg } from "@/components/CandyRainEgg";
+import { KangarooHopEgg } from "@/components/KangarooHopEgg";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,6 +41,8 @@ export default function RootLayout({
     <html lang="en" className={`${geistSans.variable} h-full antialiased`} suppressHydrationWarning>
       <body className="min-h-full flex flex-col text-zinc-900 dark:text-zinc-100">
         <ThemeInitScript />
+        <CandyRainEgg />
+        <KangarooHopEgg />
         <Header />
         {children}
         <Footer />

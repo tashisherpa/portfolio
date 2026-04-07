@@ -25,3 +25,42 @@ body {
   font-family: var(--font-geist-sans), system-ui, sans-serif;
 }
 
+@keyframes candy-rain {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(var(--candy-drift), calc(100vh + 2rem), 0)
+      rotate(var(--candy-rotate));
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .candy-rain-piece {
+    animation-name: candy-rain;
+    animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+    animation-fill-mode: forwards;
+  }
+}
+
+/* Theme-toggle easter egg — glide right→left (GIF supplies the hop) */
+@keyframes kangaroo-hop-cross {
+  0% {
+    transform: translate3d(108vw, 0, 0);
+  }
+  100% {
+    transform: translate3d(-32vw, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .kangaroo-hop-sprite {
+    animation: kangaroo-hop-cross 4.25s linear both;
+    /* during delay: hold off-screen right (0%), not default layout at left */
+  }
+}
