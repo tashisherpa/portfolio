@@ -2,7 +2,7 @@ export const profile = {
   name: "Tashi Sherpa",
   title: "Associate Software Engineer @ The New York Times",
   tagline:
-    "Building reliable messaging and platform systems at scale with Go.",
+    "Building and maintaining scalable messaging systems for The New York Times.",
   email: "tashisherpa0002@gmail.com",
   location: "New York, NY",
 };
@@ -29,7 +29,7 @@ export const experience: ExperienceItem[] = [
     start: "Jan 2025",
     end: "Present",
     summary:
-      "Building Go and Terraform features for the Messaging Platform at massive scale (push and email), with AWS, GCP, observability in Datadog and SumoLogic, and operational dashboards in BigQuery. Led a Kubernetes-to-AWS migration with Vault-backed auth, retired legacy send paths, and simplified Helix Web to reduce risk.",
+      "Building and maintaining scalable messaging platform for The New York Times, using Go, Terraform, Google Cloud and AWS.",
   },
   {
     role: "Software Engineer Apprentice",
@@ -38,7 +38,7 @@ export const experience: ExperienceItem[] = [
     start: "Sept 2024",
     end: "Nov 2024",
     summary:
-      "Worked on NYT’s internal CRM with Next.js, TypeScript, tRPC, and SCSS. Re-architected Advanced Search for extensibility and shipped an extension for PayPal invoice lookups that improved support for a large segment of customers.",
+      "Worked on NYT’s internal CRM with Next.js, TypeScript, tRPC, and SCSS. Re-architected Advanced Search for extensibility and shipped an extension for PayPal invoice lookups that improved support for customer using PayPal as a payment method.",
   },
   {
     role: "Software Engineer Intern",
@@ -47,7 +47,7 @@ export const experience: ExperienceItem[] = [
     start: "July 2024",
     end: "Aug 2024",
     summary:
-      "Built a JavaScript PDF parsing and filtering pipeline with PDF.js for spec sheets, and led a Three.js 3D product configurator that outperformed prior third-party rendering.",
+      "Built a JavaScript PDF parsing and filtering pipeline with PDF.js for spec sheets, and led a Three.js 3D product configurator POC to replace a third-party rendering solution.",
   },
   {
     role: "Software Engineer Intern",
